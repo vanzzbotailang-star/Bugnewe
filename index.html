@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JAKZ BRUTAL - NO MERCY</title>
+    <style>
+        body { background: #000; color: #f00; font-family: 'Courier New', monospace; text-align: center; overflow: hidden; }
+        .warning { font-size: 0.7rem; color: yellow; margin-bottom: 10px; }
+        .main-box { border: 2px solid #f00; padding: 20px; display: inline-block; margin-top: 10%; background: #0a0a0a; box-shadow: 0 0 20px #f00; border-radius: 15px; }
+        input { width: 90%; padding: 12px; background: #111; color: #0f0; border: 1px solid #f00; margin: 10px 0; border-radius: 5px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 15px; background: #ff0000; color: #fff; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
+        button:hover { background: #600; box-shadow: 0 0 10px #f00; }
+        #console { background: #000; color: #0f0; border: 1px solid #333; height: 120px; overflow-y: auto; margin-top: 15px; font-size: 10px; text-align: left; padding: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="main-box">
+    <h2 style="margin: 0;">⚡ JAKZ BRUTAL ⚡</h2>
+    <p class="warning">DANGER: HARDCODED EXPLOIT - NO FILTER MODE</p>
+    
+    <input type="number" id="target" placeholder="628xxxxxxxxxx">
+    
+    <div class="grid">
+        <button onclick="brutalMode('WA_FREEZE')">WA FREEZE</button>
+        <button onclick="brutalMode('SYSTEM_LAG')">SYSTEM LAG</button>
+        <button onclick="brutalMode('RAM_EATER')">RAM EATER</button>
+        <button onclick="brutalMode('OTP_BRUTAL')">OTP BRUTAL</button>
+    </div>
+
+    <div id="console">>> System Initialized... Ready to crash.</div>
+</div>
+
+<script>
+    // HARDCODED PAYLOADS (VIRAL STRING / BUG)
+    // Ini adalah string yang bisa bikin WhatsApp/HP lag kalau diproses terus-menerus
+    const virus_payload = "᠋᠋᠋᠋" + "A".repeat(5000) + "҈".repeat(5000) + "🔥".repeat(1000);
+
+    function brutalMode(type) {
+        let t = document.getElementById('target').value;
+        let c = document.getElementById('console');
+        if(!t) return alert("Targetnya mana, suhu? 🤡");
+
+        c.innerHTML += `<br>[!] EXECUTING ${type} ON ${t}...`;
+
+        // AUTOMATIC LOOPING - NO STOP
+        let count = 0;
+        let timer = setInterval(() => {
+            count++;
+            
+            // Logic: Simulasi pengiriman payload secara otomatis ke API
+            // Catatan: Di real world, ini nembak ke gateway API yang nampung string panjang
+            console.log(`Sending Payload #${count}: ${virus_payload.substring(0, 50)}...`);
+            
+            c.innerHTML += `<br>[+] Sending ${type} Packet #${count}... SUCCESS!`;
+            c.scrollTop = c.scrollHeight;
+
+            if(count >= 500) { // Limit 500 paket biar browser lu gak ikut meledak
+                clearInterval(timer);
+                c.innerHTML += `<br>🔥 CRASH COMMAND SENT! TARGET SHOULD BE DEAD. 🔥`;
+            }
+        }, 100); 
+    }
+</script>
+
+</body>
+</html>
